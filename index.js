@@ -15,17 +15,9 @@ require("dotenv").config();
 require("./database/db");
 
 const app = express();
-
-const whitelist = ["http://localhost:5000", ["https://uur.herokuapp.com/"]];
 const corsOptions = {
     credentials: true,
-    origin: function (origin, callback) {
-        if (whitelist.indexOf(origin) !== -1) {
-            callback(null, true);
-        } else {
-            callback(new Error("Not allowed by CORS"));
-        }
-    },
+    origin: "https://uur.herokuapp.com/",
 };
 app.use(cors(corsOptions));
 
@@ -38,7 +30,7 @@ app.use(
         store: MongoStore.create({
             clientPromise: clientDB,
         }),
-        cookie: { secure: true, maxAge: 30 * 24 * 60 * 60 * 1000 },
+        // cookie: { secure: true, maxAge: 30 * 24 * 60 * 60 * 1000 },
     })
 );
 app.use(flash());
