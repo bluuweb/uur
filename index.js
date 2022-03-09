@@ -27,6 +27,7 @@ app.use(
         store: MongoStore.create({
             clientPromise: clientDB,
         }),
+        cookie: { secure: true, maxAge: 30 * 24 * 60 * 60 * 1000 },
     })
 );
 app.use(flash());
