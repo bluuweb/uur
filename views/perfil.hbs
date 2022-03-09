@@ -1,0 +1,13 @@
+<h1 class="text-center">{{user.userName}}</h1>
+<div class="text-center mb-3">
+    {{#if imagen}}
+        <img src="/uploads/{{imagen}}" class="rounded-circle">
+        {{else}}
+        <img src="/uploads/fotoPerfil.jpg" class="rounded-circle" width="200px" height="200px">
+    {{/if}}
+</div>
+<form action="/perfil?_csrf={{csrfToken}}" enctype="multipart/form-data" method="post">
+    {{!-- <input type="hidden" name="_csrf" value="{{csrfToken}}"> --}}
+    <input class="form-control mb-2" type="file" id="formFile" name="myFile">
+    <button class="btn btn-dark">Cambir foto</button>
+</form>
