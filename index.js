@@ -19,8 +19,10 @@ const corsOptions = {
     credentials: true,
     origin: "https://uur.herokuapp.com/",
 };
+
 app.use(cors(corsOptions));
 
+app.set("trust proxy", 1);
 app.use(
     session({
         secret: process.env.SESSION_SECRET,
